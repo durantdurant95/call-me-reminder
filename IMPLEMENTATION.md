@@ -57,30 +57,30 @@
 
 ## 🎙️ Phase 2: Vapi Integration
 
-### 2.1 Configure Vapi Credentials
+### 2.1 Configure Vapi Credentials ✅
 
-- [ ] Sign up for Vapi account at https://vapi.ai
-- [ ] Get API key from dashboard
-- [ ] Add to `backend/.env`:
+- [x] Sign up for Vapi account at https://vapi.ai
+- [x] Get API key from dashboard
+- [x] Add to `backend/.env`:
   ```
   VAPI_API_KEY=your_api_key
   VAPI_PHONE_NUMBER_ID=your_phone_number_id
   ```
 
-### 2.2 Complete Vapi Service
+### 2.2 Complete Vapi Service ✅
 
 **File**: `backend/app/services/vapi_service.py`
 
-- [ ] Implement `create_call()` method
-  - [ ] Configure assistant with voice settings
-  - [ ] Set up first message with reminder text
-  - [ ] Make API call to Vapi
-  - [ ] Return call details (call_id, status)
-- [ ] Implement `get_call_status()` method
-- [ ] Add error handling and timeouts
-- [ ] Test with a sample call (optional for now)
+- [x] Implement `create_call()` method
+  - [x] Configure assistant with voice settings
+  - [x] Set up first message with reminder text
+  - [x] Make API call to Vapi
+  - [x] Return call details (call_id, status)
+- [x] Implement `get_call_status()` method
+- [x] Add error handling and timeouts
+- [x] Test with a sample call (optional for now)
 
-### 2.3 Webhook Handler (Optional for MVP)
+### 2.3 Webhook Handler
 
 **File**: `backend/app/api/v1/webhooks.py`
 
