@@ -28,8 +28,8 @@ services:
       - "8000:8000"
     environment:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/call_me_reminder
-      VAPI_API_KEY: ${VAPI_API_KEY}
-      VAPI_PHONE_NUMBER_ID: ${VAPI_PHONE_NUMBER_ID}
+      VAPI_API_KEY: ${VAPI_API_KEY:-}
+      VAPI_PHONE_NUMBER_ID: ${VAPI_PHONE_NUMBER_ID:-}
       ENVIRONMENT: development
       DEBUG: "True"
       CORS_ORIGINS: http://localhost:3000

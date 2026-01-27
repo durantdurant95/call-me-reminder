@@ -65,7 +65,7 @@ call-me-reminder/
 
 ## 📋 Prerequisites
 
-- **Node.js**: 18.x or higher
+- **Node.js**: 20.9.0 or higher
 - **pnpm**: 8.x or higher (install with `npm install -g pnpm`)
 - **Python**: 3.11 or higher
 - **PostgreSQL**: 15.x or higher (or use Docker)
