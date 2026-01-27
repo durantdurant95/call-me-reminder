@@ -12,10 +12,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
-from app.api.v1 import reminders
+from app.api.v1 import reminders, webhooks
 from app.core.config import settings
 # TODO: Implement later
-# from app.api.v1 import webhooks
 # from app.services.scheduler import ReminderScheduler
 
 
@@ -69,8 +68,12 @@ app.include_router(
     prefix="/api/v1/reminders",
     tags=["reminders"]
 )
-# TODO: Add webhooks router later
-# app.include_router(webhooks.router, prefix="/api/v1/webhooks", tags=["webhooks"])
+
+app.include_router(
+    webhooks.router,
+    prefix="/api/v1/webhooks",
+    tags=["webhooks"]
+)
 
 
 if __name__ == "__main__":

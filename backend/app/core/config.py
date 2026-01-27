@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     VAPI_API_KEY: str = ""
     VAPI_PHONE_NUMBER_ID: str = ""
     VAPI_BASE_URL: str = "https://api.vapi.ai"
+    VAPI_WEBHOOK_URL: str = ""  # Optional: webhook URL for call events (e.g., ngrok URL)
     
     # Twilio Configuration (optional)
     TWILIO_ACCOUNT_SID: str = ""

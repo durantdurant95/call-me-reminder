@@ -53,6 +53,7 @@ class Reminder(Base):
         index=True
     )
     call_attempts = Column(Integer, default=0)
+    vapi_call_id = Column(String(255), nullable=True)  # Vapi call ID for tracking
     last_error = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())

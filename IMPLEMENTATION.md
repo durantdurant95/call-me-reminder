@@ -80,14 +80,21 @@
 - [x] Add error handling and timeouts
 - [x] Test with a sample call (optional for now)
 
-### 2.3 Webhook Handler
+### 2.3 Webhook Handler ✅
 
 **File**: `backend/app/api/v1/webhooks.py`
 
-- [ ] Create webhook endpoint `POST /api/v1/webhooks/vapi`
-- [ ] Handle call status events (started, ended, failed)
-- [ ] Update reminder status based on webhook
-- [ ] Include router in `backend/app/main.py`
+- [x] Create webhook endpoint `POST /api/v1/webhooks/vapi`
+- [x] Handle call status events (started, ended, failed)
+- [x] Update reminder status based on webhook
+- [x] Include router in `backend/app/main.py`
+
+**Setup Required:**
+
+- Run migration: `alembic revision --autogenerate -m "Add vapi_call_id"` then `alembic upgrade head`
+- For local testing: Use ngrok to expose webhook endpoint
+- Configure webhook URL in Vapi dashboard
+- See `WEBHOOK_SETUP.md` for detailed instructions
 
 ---
 
