@@ -20,16 +20,10 @@
 
 ### 1.1 Database Configuration
 
-- [ ] Update `backend/.env` with your database credentials
-- [ ] Configure Alembic for migrations
-  - [ ] Create `backend/alembic.ini`
-  - [ ] Update `backend/alembic/env.py` to import Base and models
-- [ ] Run initial migration
-  ```bash
-  cd backend
-  alembic revision --autogenerate -m "Create reminders table"
-  alembic upgrade head
-  ```
+- [x] Update `backend/.env` with your database credentials
+- [x] Configure Alembic for migrations
+  - [x] Create `backend/alembic.ini`
+  - [x] Update `backend/alembic/env.py` to import Base and models
 
 ### 1.2 API Endpoints Implementation
 
