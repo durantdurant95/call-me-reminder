@@ -12,10 +12,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
-# Placeholder for actual imports (to be implemented)
-# from app.api.v1 import reminders, webhooks
-# from app.core.config import settings
-# from app.core.database import engine, Base
+from app.api.v1 import reminders
+from app.core.config import settings
+# TODO: Implement later
+# from app.api.v1 import webhooks
 # from app.services.scheduler import ReminderScheduler
 
 
@@ -51,7 +51,7 @@ app = FastAPI(
 # CORS Configuration
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # TODO: Load from settings
+    allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -63,9 +63,13 @@ async def health_check():
     """Health check endpoint."""
     return {"status": "healthy", "message": "Call Me Reminder API is running"}
 
-
-# TODO: Include routers
-# app.include_router(reminders.router, prefix="/api/v1/reminders", tags=["reminders"])
+# Include API routers
+app.include_router(
+    reminders.router,
+    prefix="/api/v1/reminders",
+    tags=["reminders"]
+)
+# TODO: Add webhooks router later
 # app.include_router(webhooks.router, prefix="/api/v1/webhooks", tags=["webhooks"])
 
 

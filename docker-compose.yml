@@ -32,7 +32,7 @@ services:
       VAPI_PHONE_NUMBER_ID: ${VAPI_PHONE_NUMBER_ID:-}
       ENVIRONMENT: development
       DEBUG: "True"
-      CORS_ORIGINS: http://localhost:3000
+      CORS_ORIGINS: '["http://localhost:3000"]'
     depends_on:
       postgres:
         condition: service_healthy

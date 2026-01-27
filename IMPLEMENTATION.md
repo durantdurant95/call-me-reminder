@@ -25,33 +25,33 @@
   - [x] Create `backend/alembic.ini`
   - [x] Update `backend/alembic/env.py` to import Base and models
 
-### 1.2 API Endpoints Implementation
+### 1.2 API Endpoints Implementation ✅
 
 **File**: `backend/app/api/v1/reminders.py`
 
-- [ ] Create router and import dependencies
-- [ ] Implement `POST /api/v1/reminders` - Create reminder
-  - [ ] Validate input data
-  - [ ] Save to database
-  - [ ] Return created reminder
-- [ ] Implement `GET /api/v1/reminders` - List reminders
-  - [ ] Add query parameters: `?status=`, `?search=`, `?sort=`
-  - [ ] Add pagination support
-  - [ ] Return list with total count
-- [ ] Implement `GET /api/v1/reminders/{id}` - Get single reminder
-- [ ] Implement `PUT /api/v1/reminders/{id}` - Update reminder
-  - [ ] Validate that scheduled reminders can be edited
-  - [ ] Update only provided fields
-- [ ] Implement `DELETE /api/v1/reminders/{id}` - Delete reminder
-- [ ] Include router in `backend/app/main.py`
+- [x] Create router and import dependencies
+- [x] Implement `POST /api/v1/reminders` - Create reminder
+  - [x] Validate input data
+  - [x] Save to database
+  - [x] Return created reminder
+- [x] Implement `GET /api/v1/reminders` - List reminders
+  - [x] Add query parameters: `?status=`, `?search=`, `?sort=`
+  - [x] Add pagination support
+  - [x] Return list with total count
+- [x] Implement `GET /api/v1/reminders/{id}` - Get single reminder
+- [x] Implement `PUT /api/v1/reminders/{id}` - Update reminder
+  - [x] Validate that scheduled reminders can be edited
+  - [x] Update only provided fields
+- [x] Implement `DELETE /api/v1/reminders/{id}` - Delete reminder
+- [x] Include router in `backend/app/main.py`
 
-### 1.3 Test Backend API
+### 1.3 Test Backend API ✅
 
-- [ ] Start backend: `uvicorn app.main:app --reload`
-- [ ] Visit API docs: `http://localhost:8000/docs`
-- [ ] Test create reminder endpoint
-- [ ] Test list reminders endpoint
-- [ ] Test update and delete endpoints
+- [x] Start backend: `uvicorn app.main:app --reload`
+- [x] Visit API docs: `http://localhost:8000/docs`
+- [x] Test create reminder endpoint
+- [x] Test list reminders endpoint
+- [x] Test update and delete endpoints
 
 ---
 
