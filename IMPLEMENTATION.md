@@ -139,9 +139,9 @@ cd backend && python3 test_scheduler.py create +19362624172 2
 
 ### 3.3 Test Scheduler
 
-- [ ] Create a reminder 2 minutes in the future using test script
-- [ ] Watch backend logs for scheduler activity
-- [ ] Verify reminder status changes to COMPLETED
+- [x] Create a reminder 2 minutes in the future using test script
+- [x] Watch backend logs for scheduler activity
+- [x] Verify reminder status changes to COMPLETED
 
 **Test Commands:**
 
