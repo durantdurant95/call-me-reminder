@@ -167,22 +167,22 @@ cd frontend
 pnpm install
 ```
 
-- [ ] Verify all packages installed correctly
-- [ ] Create `.env.local` with `NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1`
+- [x] Verify all packages installed correctly
+- [x] Create `.env.local` with `NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1`
 
 ### 4.2 Set Up React Query Provider
 
 **File**: `frontend/app/providers.tsx`
 
-- [ ] Create Providers component with QueryClientProvider
-- [ ] Configure React Query defaults
-- [ ] Add Toaster from sonner
+- [x] Create Providers component with QueryClientProvider
+- [x] Configure React Query defaults
+- [x] Add Toaster from sonner
 
 **File**: `frontend/app/layout.tsx`
 
-- [ ] Wrap children with Providers
-- [ ] Add Toaster component
-- [ ] Configure Inter font
+- [x] Wrap children with Providers
+- [x] Add Toaster component
+- [x] Configure Inter font
 
 ### 4.3 Install shadcn/ui Components
 
@@ -194,7 +194,7 @@ pnpm dlx shadcn@latest add card
 pnpm dlx shadcn@latest add badge
 pnpm dlx shadcn@latest add dialog
 pnpm dlx shadcn@latest add form
-pnpm dlx shadcn@latest add toast
+pnpm dlx shadcn@latest add sonner
 pnpm dlx shadcn@latest add select
 pnpm dlx shadcn@latest add calendar
 pnpm dlx shadcn@latest add skeleton
@@ -202,8 +202,8 @@ pnpm dlx shadcn@latest add dropdown-menu
 pnpm dlx shadcn@latest add tabs
 ```
 
-- [ ] All components installed successfully
-- [ ] Verify imports work in a test component
+- [x] All components installed successfully
+- [x] Verify imports work in a test component
 
 ### 4.4 Create Custom UI Components
 
