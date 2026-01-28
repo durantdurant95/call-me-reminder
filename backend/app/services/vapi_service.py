@@ -84,9 +84,11 @@ class VapiService:
             }
             
             # Add webhook URL if configured (for real-time status updates)
-            if settings.VAPI_WEBHOOK_URL:
-                payload["serverUrl"] = settings.VAPI_WEBHOOK_URL
-                logger.debug(f"Including webhook URL: {settings.VAPI_WEBHOOK_URL}")
+            # Note: Some Vapi accounts may not support per-call serverUrl
+            # In that case, configure it at account level in Vapi dashboard
+            # if settings.VAPI_WEBHOOK_URL:
+            #     payload["serverUrl"] = settings.VAPI_WEBHOOK_URL
+            #     logger.debug(f"Including webhook URL: {settings.VAPI_WEBHOOK_URL}")
             
             logger.info(f"Initiating Vapi call for reminder {reminder_id} to {phone_number}")
             

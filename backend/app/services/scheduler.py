@@ -95,16 +95,29 @@ class ReminderScheduler:
             call_result = await vapi_service.create_call(
                 phone_number=reminder.phone_number,
                 message=reminder.message,
-                reminder_id=str(reminder.id)
+                reminder_id=str(reminder.id),
+                title=reminder.title
             )
             
-            # Update reminder based on call result
-            if call_result.get('status') in ['queued', 'ringing', 'in-progress']:
-                reminder.status = ReminderStatus.COMPLETED
-                reminder.completed_at = datetime.now(timezone.utc)
-                logger.info(f"Reminder {reminder.id} call initiated successfully")
+            # Store the Vapi call ID for tracking
+            reminder.vapi_call_id = call_result.get('id')
+            
+            # Update reminder status based on call initiation
+            # Note: If webhook is configured, the webhook will update to COMPLETED
+            # Otherwise, we optimistically mark as COMPLETED here
+            call_status = call_result.get('status', '').lower()
+            
+            if call_status in ['queued', 'ringing', 'in-progress', 'started']:
+                # If no webhook configured, mark as completed immediately
+                # If webhook IS configured, it will update the status when call actually ends
+                if not settings.VAPI_WEBHOOK_URL:
+                    reminder.status = ReminderStatus.COMPLETED
+                    reminder.completed_at = datetime.now(timezone.utc)
+                    logger.info(f"Reminder {reminder.id} marked as COMPLETED (no webhook)")
+                else:
+                    logger.info(f"Reminder {reminder.id} call initiated. Waiting for webhook to update status.")
             else:
-                raise Exception(f"Unexpected call status: {call_result.get('status')}")
+                raise Exception(f"Call failed with status: {call_status}")
             
             db.commit()
         

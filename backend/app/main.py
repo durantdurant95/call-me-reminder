@@ -14,8 +14,7 @@ from contextlib import asynccontextmanager
 
 from app.api.v1 import reminders, webhooks
 from app.core.config import settings
-# TODO: Implement later
-# from app.services.scheduler import ReminderScheduler
+from app.services.scheduler import reminder_scheduler
 
 
 @asynccontextmanager
@@ -29,15 +28,17 @@ async def lifespan(app: FastAPI):
     """
     # Startup
     print("Starting application...")
-    # TODO: Initialize database tables
-    # TODO: Start reminder scheduler
+    print("Starting reminder scheduler...")
+    reminder_scheduler.start()
+    print(f"Scheduler will check for due reminders every {settings.SCHEDULER_CHECK_INTERVAL} seconds")
     
     yield
     
     # Shutdown
     print("Shutting down application...")
-    # TODO: Stop scheduler
-    # TODO: Close database connections
+    print("Stopping reminder scheduler...")
+    reminder_scheduler.shutdown()
+    print("Application shutdown complete")
 
 
 app = FastAPI(
