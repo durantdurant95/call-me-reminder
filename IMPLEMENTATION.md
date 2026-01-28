@@ -92,9 +92,25 @@
 **Setup Required:**
 
 - Run migration: `alembic revision --autogenerate -m "Add vapi_call_id"` then `alembic upgrade head`
-- For local testing: Use ngrok to expose webhook endpoint
-- Configure webhook URL in Vapi dashboard
-- See `WEBHOOK_SETUP.md` for detailed instructions
+- For local development: Use `vapi listen` + ngrok (see `WEBHOOK_DEV_SETUP.md`)
+- Configure Server URL at account level in Vapi Dashboard (NOT in API payload)
+- Note: Free Vapi accounts don't support `serverUrl` in API calls - must configure in Dashboard
+
+**Quick Start:**
+
+```bash
+# Terminal 1: Docker services
+docker-compose up
+
+# Terminal 2: ngrok tunnel
+ngrok http 4242
+
+# Terminal 3: Vapi CLI forwarder
+vapi listen --forward-to localhost:8000/api/v1/webhooks/vapi
+
+# Terminal 4: Configure Vapi Dashboard with ngrok URL, then test
+cd backend && python3 test_scheduler.py create +19362624172 2
+```
 
 ---
 
