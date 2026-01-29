@@ -149,27 +149,28 @@ components/
 
 **File**: `components/shared/empty-state.tsx`
 
-- [ ] Create EmptyState component with icon, title, description, CTA
-- [ ] Make reusable for different scenarios
+- [x] Create EmptyState component with icon, title, description, CTA
+- [x] Make reusable for different scenarios
 
 **File**: `components/shared/status-badge.tsx`
 
-- [ ] Create StatusBadge for reminder statuses (scheduled, completed, failed)
-- [ ] Add color variants and icons
+- [x] Create StatusBadge for reminder statuses (scheduled, completed, failed, pending)
+- [x] Add color variants and icons
 
 **File**: `components/shared/countdown-timer.tsx`
 
-- [ ] Create CountdownTimer that updates every second
-- [ ] Display time remaining in human-readable format
-- [ ] Change color based on urgency
+- [x] Create CountdownTimer that updates every second
+- [x] Display time remaining in human-readable format
+- [x] Change color based on urgency (normal, warning, critical)
 
 **File**: `components/shared/loading-state.tsx`
 
-- [ ] Create skeleton loaders for cards and lists
+- [x] Create skeleton loaders for cards and lists
+- [x] Create ReminderCardSkeleton and ReminderListSkeleton
 
 **File**: `components/layout/page-header.tsx`
 
-- [ ] Create PageHeader with title, description, and action buttons
+- [x] Create PageHeader with title, description, and action buttons
 
 ### 5.2 Reminder Form Component
 
