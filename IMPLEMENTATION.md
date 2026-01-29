@@ -125,21 +125,21 @@ components/
 
 **File**: `hooks/use-reminders.ts`
 
-- [ ] Create `useReminders(filters)` hook for fetching list
-  - [ ] Support filters: status, search, sort
-  - [ ] Enable auto-refetch every 10 seconds
-  - [ ] Return data, loading, error states
-- [ ] Create `useReminder(id)` hook for single reminder
-- [ ] Create `useCreateReminder()` mutation
-  - [ ] Invalidate reminders list on success
-  - [ ] Show success toast
-  - [ ] Show error toast on failure
-- [ ] Create `useUpdateReminder()` mutation
-  - [ ] Optimistic update
-  - [ ] Invalidate queries on success
-- [ ] Create `useDeleteReminder()` mutation
-  - [ ] Optimistic removal from list
-  - [ ] Show confirmation toast
+- [x] Create `useReminders(filters)` hook for fetching list
+  - [x] Support filters: status, search, sort
+  - [x] Enable auto-refetch every 10 seconds
+  - [x] Return data, loading, error states
+- [x] Create `useReminder(id)` hook for single reminder
+- [x] Create `useCreateReminder()` mutation
+  - [x] Invalidate reminders list on success
+  - [x] Show success toast
+  - [x] Show error toast on failure
+- [x] Create `useUpdateReminder()` mutation
+  - [x] Optimistic update
+  - [x] Invalidate queries on success
+- [x] Create `useDeleteReminder()` mutation
+  - [x] Optimistic removal from list
+  - [x] Show confirmation toast
 
 ---
 
