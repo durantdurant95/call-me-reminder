@@ -112,14 +112,14 @@ components/
 
 **File**: `lib/api/reminders.ts`
 
-- [ ] Create axios instance with baseURL and auth headers
-- [ ] Implement `remindersApi.create(data)` - POST request
-- [ ] Implement `remindersApi.list(filters)` - GET with query params
-- [ ] Implement `remindersApi.getById(id)` - GET single
-- [ ] Implement `remindersApi.update(id, data)` - PUT request
-- [ ] Implement `remindersApi.delete(id)` - DELETE request
-- [ ] Add TypeScript types for request/response
-- [ ] Add error handling and retries
+- [x] Create fetch wrapper with baseURL and auth headers
+- [x] Implement `remindersApi.create(data)` - POST request
+- [x] Implement `remindersApi.list(filters)` - GET with query params
+- [x] Implement `remindersApi.getById(id)` - GET single
+- [x] Implement `remindersApi.update(id, data)` - PUT request
+- [x] Implement `remindersApi.delete(id)` - DELETE request
+- [x] Add TypeScript types for request/response
+- [x] Add error handling and response parsing
 
 ### 4.2 React Query Hooks
 
