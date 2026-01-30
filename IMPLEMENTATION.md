@@ -245,22 +245,22 @@ components/
 
 ### 6.1 Edit Reminder Dialog
 
-**File**: `components/features/reminders/reminder-edit-dialog.tsx`
+**File**: `components/features/reminders/reminder-dialog.tsx` _(extended to support edit mode)_
 
-- [ ] Create dialog that opens from action menu
-- [ ] Pre-fill form with reminder data
-- [ ] Submit update mutation
-- [ ] Close dialog on success
+- [x] Create dialog that opens from action menu
+- [x] Pre-fill form with reminder data
+- [x] Submit update mutation
+- [x] Close dialog on success
 
 ### 6.2 Delete Confirmation
 
-**Use AlertDialog from shadcn/ui**
+**File**: `components/features/reminders/delete-reminder-dialog.tsx`
 
-- [ ] Show confirmation before deletion
-- [ ] Display reminder title in confirmation
-- [ ] Handle delete mutation
-- [ ] Show success toast
-- [ ] Remove from list optimistically
+- [x] Show confirmation before deletion
+- [x] Display reminder title in confirmation
+- [x] Handle delete mutation
+- [x] Show success toast
+- [x] Remove from list optimistically
 
 ---
 

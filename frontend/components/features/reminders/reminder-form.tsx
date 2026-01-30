@@ -15,12 +15,16 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
-import { useCreateReminder } from "@/hooks/use-reminders";
-import type { ReminderCreate } from "@/types/reminder";
+import { useCreateReminder, useUpdateReminder } from "@/hooks/use-reminders";
+import type {
+  Reminder,
+  ReminderCreate,
+  ReminderUpdate,
+} from "@/types/reminder";
 import { useForm } from "@tanstack/react-form-nextjs";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { ChevronDownIcon, Loader2Icon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -44,40 +48,73 @@ const reminderSchema = z.object({
 interface ReminderFormProps {
   onSuccess?: () => void;
   onCancel?: () => void;
+  reminder?: Reminder; // Pass reminder data for edit mode
+  mode?: "create" | "edit";
 }
 
-export function ReminderForm({ onSuccess, onCancel }: ReminderFormProps) {
+export function ReminderForm({
+  onSuccess,
+  onCancel,
+  reminder,
+  mode = "create",
+}: ReminderFormProps) {
   const createReminder = useCreateReminder();
+  const updateReminder = useUpdateReminder();
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [popoverOpen, setPopoverOpen] = useState(false);
 
   // Auto-detect timezone
   const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
+  const isEditMode = mode === "edit" && reminder;
+
+  // Initialize form with reminder data if editing
+  const initialDate = isEditMode
+    ? parseISO(reminder.scheduled_datetime)
+    : undefined;
+
   const form = useForm({
     defaultValues: {
-      title: "",
-      message: "",
-      phone_number: "+1",
-      scheduled_datetime: "",
-      timezone: userTimezone,
+      title: isEditMode ? reminder.title : "",
+      message: isEditMode ? reminder.message : "",
+      phone_number: isEditMode ? reminder.phone_number : "+1",
+      scheduled_datetime: isEditMode ? reminder.scheduled_datetime : "",
+      timezone: isEditMode ? reminder.timezone : userTimezone,
     },
     onSubmit: async ({ value }) => {
       const submitPromise = (async () => {
-        await createReminder.mutateAsync(value as ReminderCreate);
+        if (isEditMode) {
+          await updateReminder.mutateAsync({
+            id: reminder.id,
+            data: value as ReminderUpdate,
+          });
+        } else {
+          await createReminder.mutateAsync(value as ReminderCreate);
+        }
         onSuccess?.();
       })();
 
       toast.promise(submitPromise, {
-        loading: "Creating reminder...",
-        success: "Reminder created successfully!",
+        loading: isEditMode ? "Updating reminder..." : "Creating reminder...",
+        success: isEditMode
+          ? "Reminder updated successfully!"
+          : "Reminder created successfully!",
         error: (error) =>
-          error instanceof Error ? error.message : "Failed to create reminder",
+          error instanceof Error
+            ? error.message
+            : `Failed to ${isEditMode ? "update" : "create"} reminder`,
       });
 
       await submitPromise;
     },
   });
+
+  // Set initial date and time for edit mode
+  useEffect(() => {
+    if (isEditMode && initialDate) {
+      setSelectedDate(initialDate);
+    }
+  }, [isEditMode, initialDate]);
 
   // Combine date and time into ISO datetime string
   const handleDateTimeChange = (date: Date | undefined, time?: string) => {
@@ -99,7 +136,9 @@ export function ReminderForm({ onSuccess, onCancel }: ReminderFormProps) {
     }
   };
 
-  const isSubmitting = createReminder.isPending;
+  const isSubmitting = isEditMode
+    ? updateReminder.isPending
+    : createReminder.isPending;
 
   return (
     <form
@@ -302,6 +341,9 @@ export function ReminderForm({ onSuccess, onCancel }: ReminderFormProps) {
                 <Input
                   type="time"
                   id="scheduled-time"
+                  defaultValue={
+                    initialDate ? format(initialDate, "HH:mm") : undefined
+                  }
                   onChange={(e) => {
                     handleDateTimeChange(selectedDate, e.target.value);
                   }}
@@ -342,7 +384,13 @@ export function ReminderForm({ onSuccess, onCancel }: ReminderFormProps) {
               {isSubmitting && (
                 <Loader2Icon className="mr-2 h-4 w-4 animate-spin" />
               )}
-              {isSubmitting ? "Creating..." : "Create Reminder"}
+              {isSubmitting
+                ? isEditMode
+                  ? "Updating..."
+                  : "Creating..."
+                : isEditMode
+                  ? "Update Reminder"
+                  : "Create Reminder"}
             </Button>
           )}
         </form.Subscribe>
