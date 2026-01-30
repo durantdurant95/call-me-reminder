@@ -1,3 +1,5 @@
+import { ReminderList } from "@/components/features/reminders/reminder-list";
+
 export default function DashboardPage() {
   return (
     <div className="gap-4 p-4">
@@ -22,6 +24,7 @@ export default function DashboardPage() {
           completed_at: null,
         }}
       /> */}
+      <ReminderList />
     </div>
   );
 }
