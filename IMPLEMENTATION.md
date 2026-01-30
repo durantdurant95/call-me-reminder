@@ -223,10 +223,10 @@ components/
 
 **File**: `components/features/reminders/reminder-filters.tsx`
 
-- [ ] Create filter tabs: All, Scheduled, Completed, Failed
-- [ ] Add search input with debouncing (300ms)
-- [ ] Add sort dropdown: Newest, Oldest, Title A-Z
-- [ ] Update query params on filter change
+- [x] Create filter tabs: All, Scheduled, Completed, Failed
+- [x] Add search input with debouncing (300ms)
+- [x] Add sort dropdown: Newest, Oldest, Title A-Z
+- [x] Update query params on filter change
 
 ### 5.7 Update Dashboard Page
 
