@@ -1,4 +1,4 @@
-import { ReminderDialog } from "@/components/features/reminders";
+import { ReminderDialog } from "@/components/features/reminders/reminder-dialog";
 
 export default function DashboardPage() {
   return (
