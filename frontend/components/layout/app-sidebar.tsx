@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/sidebar";
 import type { User } from "@/lib/auth";
 import { Calendar, Home, Phone, Settings } from "lucide-react";
+import { usePathname } from "next/navigation";
 import * as React from "react";
 import { NavUser } from "./nav-user";
 
@@ -21,18 +22,17 @@ const navMain = [
   },
   {
     title: "Reminders",
-    url: "/dashboard",
+    url: "/dashboard/reminders",
     icon: Phone,
-    isActive: true,
   },
   {
     title: "Calendar",
-    url: "/dashboard",
+    url: "/dashboard/calendar",
     icon: Calendar,
   },
   {
     title: "Settings",
-    url: "/dashboard",
+    url: "/dashboard/settings",
     icon: Settings,
   },
 ];
@@ -41,6 +41,8 @@ export function AppSidebar({
   user,
   ...props
 }: React.ComponentProps<typeof Sidebar> & { user: User | null }) {
+  const pathname = usePathname();
+
   return (
     <Sidebar variant="floating" {...props}>
       <SidebarHeader>
@@ -65,9 +67,10 @@ export function AppSidebar({
           <SidebarMenu className="gap-2">
             {navMain.map((item) => {
               const Icon = item.icon;
+              const isActive = pathname === item.url;
               return (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={item.isActive}>
+                  <SidebarMenuButton asChild isActive={isActive}>
                     <a href={item.url} className="font-medium">
                       <Icon className="size-4" />
                       {item.title}

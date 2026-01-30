@@ -33,7 +33,7 @@ export function ReminderDialog({ trigger }: ReminderDialogProps) {
       <DialogTrigger asChild>
         {trigger || (
           <Button>
-            <PlusIcon className="mr-2 h-4 w-4" />
+            <PlusIcon className="h-4 w-4" />
             New Reminder
           </Button>
         )}
