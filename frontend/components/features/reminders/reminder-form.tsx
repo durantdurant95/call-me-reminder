@@ -21,6 +21,7 @@ import { useForm } from "@tanstack/react-form-nextjs";
 import { format } from "date-fns";
 import { ChevronDownIcon, Loader2Icon } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import { z } from "zod";
 
 // Zod validation schema matching backend requirements
@@ -62,13 +63,19 @@ export function ReminderForm({ onSuccess, onCancel }: ReminderFormProps) {
       timezone: userTimezone,
     },
     onSubmit: async ({ value }) => {
-      try {
+      const submitPromise = (async () => {
         await createReminder.mutateAsync(value as ReminderCreate);
         onSuccess?.();
-      } catch (error) {
-        // Error is already handled by the mutation (toast notification)
-        console.error("Failed to create reminder:", error);
-      }
+      })();
+
+      toast.promise(submitPromise, {
+        loading: "Creating reminder...",
+        success: "Reminder created successfully!",
+        error: (error) =>
+          error instanceof Error ? error.message : "Failed to create reminder",
+      });
+
+      await submitPromise;
     },
   });
 
