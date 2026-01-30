@@ -115,9 +115,12 @@ export function ReminderForm({ onSuccess, onCancel }: ReminderFormProps) {
         name="title"
         validators={{
           onChange: ({ value }) => {
-            const result = reminderSchema.shape.title.safeParse(value);
-            if (!result.success) {
-              return result.error.issues[0]?.message;
+            // Only validate if user has typed something and meet minimum length
+            if (value.length === 0 || value.length >= 2) {
+              const result = reminderSchema.shape.title.safeParse(value);
+              if (!result.success) {
+                return result.error.issues[0]?.message;
+              }
             }
             return undefined;
           },
@@ -156,9 +159,12 @@ export function ReminderForm({ onSuccess, onCancel }: ReminderFormProps) {
         name="message"
         validators={{
           onChange: ({ value }) => {
-            const result = reminderSchema.shape.message.safeParse(value);
-            if (!result.success) {
-              return result.error.issues[0]?.message;
+            // Only validate if user has typed something and meet minimum length
+            if (value.length === 0 || value.length >= 10) {
+              const result = reminderSchema.shape.message.safeParse(value);
+              if (!result.success) {
+                return result.error.issues[0]?.message;
+              }
             }
             return undefined;
           },
@@ -282,7 +288,11 @@ export function ReminderForm({ onSuccess, onCancel }: ReminderFormProps) {
                         handleDateTimeChange(date);
                         setPopoverOpen(false);
                       }}
-                      disabled={(date) => date < new Date()}
+                      disabled={(date) => {
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        return date < today;
+                      }}
                     />
                   </PopoverContent>
                 </Popover>
