@@ -94,11 +94,30 @@ export function ReminderForm({
         onSuccess?.();
       })();
 
+      const scheduledDate = new Date(value.scheduled_datetime);
+      const formattedTime = scheduledDate.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      });
+
       toast.promise(submitPromise, {
         loading: isEditMode ? "Updating reminder..." : "Creating reminder...",
-        success: isEditMode
-          ? "Reminder updated successfully!"
-          : "Reminder created successfully!",
+        success: () => {
+          // Show info toast after success
+          if (!isEditMode) {
+            setTimeout(() => {
+              toast.info("Reminder scheduled", {
+                description: `You'll receive a call on ${formattedTime}`,
+              });
+            }, 500);
+          }
+          return isEditMode
+            ? "Reminder updated successfully!"
+            : "Reminder created successfully!";
+        },
         error: (error) =>
           error instanceof Error
             ? error.message

@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -27,6 +28,7 @@ export default function LandingPage() {
             <Link href="/signup">
               <Button>Get Started</Button>
             </Link>
+            <ThemeToggle />
           </nav>
         </div>
       </header>
@@ -233,7 +235,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="border-t py-8">
-        <div className="container">
+        <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center space-x-2">
               <div className="flex h-6 w-6 items-center justify-center rounded bg-primary">

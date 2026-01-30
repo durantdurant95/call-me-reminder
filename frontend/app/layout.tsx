@@ -1,3 +1,4 @@
+import { NetworkStatusToast } from "@/components/shared/network-status-toast";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
@@ -25,8 +26,9 @@ export default function RootLayout({
     >
       <body>
         <Providers>
+          <NetworkStatusToast />
           {children}
-          <Toaster position="top-right" />
+          <Toaster position="top-right" richColors />
         </Providers>
       </body>
     </html>

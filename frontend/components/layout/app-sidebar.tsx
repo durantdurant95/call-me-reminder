@@ -9,7 +9,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import type { User } from "@/lib/auth";
-import { Calendar, Home, Phone, Settings } from "lucide-react";
+import { Calendar, Home, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import * as React from "react";
 import { NavUser } from "./nav-user";
@@ -29,11 +29,6 @@ const navMain = [
     title: "Calendar",
     url: "/dashboard/calendar",
     icon: Calendar,
-  },
-  {
-    title: "Settings",
-    url: "/dashboard/settings",
-    icon: Settings,
   },
 ];
 
