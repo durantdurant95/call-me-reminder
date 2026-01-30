@@ -270,13 +270,13 @@ components/
 
 **File**: `components/features/dashboard/stats-card.tsx`
 
-- [ ] Create StatsCard component with icon, title, value, change
+- [x] Create StatsCard component with icon, title, value, change
 
 **Update**: `app/dashboard/page.tsx`
 
-- [ ] Show total reminders count
-- [ ] Show scheduled reminders count
-- [ ] Show completed today count
+- [x] Show total reminders count
+- [x] Show scheduled reminders count
+- [x] Show completed today count
 
 ### 7.2 Recent Activity
 
