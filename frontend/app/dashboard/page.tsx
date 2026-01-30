@@ -1,5 +1,7 @@
 "use client";
 
+import { ReminderActivityChart } from "@/components/features/dashboard/reminder-activity-chart";
+import { ReminderStatusChart } from "@/components/features/dashboard/reminder-status-chart";
 import { StatsCard } from "@/components/features/dashboard/stats-card";
 import { useReminders } from "@/hooks/use-reminders";
 import type { ReminderListResponse } from "@/types/reminder";
@@ -72,6 +74,13 @@ export default function DashboardPage() {
           icon={CalendarCheckIcon}
           description={`${stats.completed} total completed`}
         />
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-2">
+        <ReminderActivityChart
+          reminders={scheduledReminders?.reminders ?? []}
+        />
+        <ReminderStatusChart reminders={allReminders?.reminders ?? []} />
       </div>
     </div>
   );

@@ -280,11 +280,14 @@ components/
 
 ### 7.2 Recent Activity
 
-**File**: `components/features/dashboard/recent-activity.tsx`
+**Files**: 
+- `components/features/dashboard/reminder-activity-chart.tsx`
+- `components/features/dashboard/reminder-status-chart.tsx`
 
-- [ ] Create timeline of recent calls
-- [ ] Show last 5-10 completed reminders
-- [ ] Display time, status, and title
+- [x] Create area chart showing upcoming reminders (next 7 days)
+- [x] Create bar chart showing completion status (past 7 days)
+- [x] Display charts in responsive grid layout
+- [x] Integrate with Recharts library
 
 ---
 

@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM node:20-alpine
 
 WORKDIR /app
@@ -5,11 +6,13 @@ WORKDIR /app
 # Install pnpm
 RUN npm install -g pnpm
 
-# Copy package files
+# Copy package files first (better caching)
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Install dependencies using cache mount
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+    pnpm config set store-dir /pnpm/store && \
+    pnpm install --frozen-lockfile
 
 # Copy application code
 COPY . .
