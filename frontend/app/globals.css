@@ -67,7 +67,7 @@
   --input: oklch(0.92 0.004 286.32);
   --ring: oklch(0.705 0.015 286.067);
   --chart-1: oklch(0.87 0.12 207);
-  --chart-2: oklch(0.80 0.13 212);
+  --chart-2: oklch(0.8 0.13 212);
   --chart-3: oklch(0.71 0.13 215);
   --chart-4: oklch(0.61 0.11 222);
   --chart-5: oklch(0.52 0.09 223);
@@ -90,7 +90,7 @@
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.71 0.13 215);
-  --primary-foreground: oklch(0.30 0.05 230);
+  --primary-foreground: oklch(0.3 0.05 230);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
@@ -102,14 +102,14 @@
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.552 0.016 285.938);
   --chart-1: oklch(0.87 0.12 207);
-  --chart-2: oklch(0.80 0.13 212);
+  --chart-2: oklch(0.8 0.13 212);
   --chart-3: oklch(0.71 0.13 215);
   --chart-4: oklch(0.61 0.11 222);
   --chart-5: oklch(0.52 0.09 223);
   --sidebar: oklch(0.21 0.006 285.885);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.80 0.13 212);
-  --sidebar-primary-foreground: oklch(0.30 0.05 230);
+  --sidebar-primary: oklch(0.8 0.13 212);
+  --sidebar-primary-foreground: oklch(0.3 0.05 230);
   --sidebar-accent: oklch(0.274 0.006 286.033);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
@@ -122,5 +122,88 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* FullCalendar Custom Styles */
+
+.fc {
+  color: oklch(var(--foreground));
+}
+
+.fc th {
+  @apply border-0;
+}
+
+.fc .fc-button {
+  @apply rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground border-0;
+}
+
+.fc .fc-button-primary:not(:disabled):hover {
+  @apply opacity-90;
+}
+
+.fc .fc-button-primary:not(:disabled):active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  @apply opacity-80 shadow-none;
+}
+
+.fc .fc-toolbar-title {
+  @apply text-xl font-semibold text-foreground;
+}
+
+/* Calendar headers - day names */
+.fc .fc-col-header-cell {
+  @apply bg-muted/95 border-0;
+}
+
+.fc .fc-scrollgrid-sync-inner {
+  @apply border-border;
+}
+
+.fc .fc-col-header-cell-cushion {
+  @apply text-foreground font-semibold py-2 border-b border-border;
+}
+
+/* Day numbers */
+.fc .fc-daygrid-day-number {
+  @apply text-foreground p-2;
+}
+
+.fc .fc-event {
+  @apply hover:cursor-pointer;
+}
+
+/* Time labels in week/day view */
+.fc .fc-timegrid-axis-cushion,
+.fc .fc-timegrid-slot-label-cushion {
+  @apply text-muted-foreground;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  @apply border-border;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  @apply border-border;
+}
+
+/* Make calendar responsive */
+@media (max-width: 640px) {
+  .fc .fc-toolbar {
+    @apply flex-col gap-2;
+  }
+
+  .fc .fc-toolbar-chunk {
+    @apply flex justify-center;
+  }
+
+  .fc .fc-toolbar-title {
+    @apply text-lg;
+  }
+
+  .fc .fc-button {
+    @apply text-xs px-2 py-1;
   }
 }
