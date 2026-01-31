@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Bell, Calendar, Clock, Phone, Shield, Zap } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function LandingPage() {
@@ -60,32 +61,31 @@ export default function LandingPage() {
                 Start For Free
               </Button>
             </Link>
-            {/* <Link href="/login">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                View Demo
-              </Button>
-            </Link> */}
           </div>
         </div>
 
         {/* Demo Preview */}
-        <div className="mx-auto mt-16 w-full max-w-5xl">
-          <Card className="overflow-hidden border-2">
-            <div className="aspect-video bg-linear-to-br from-muted to-muted/50 p-8">
-              <div className="flex h-full items-center justify-center">
-                <div className="space-y-4 text-center">
-                  <Phone className="mx-auto h-16 w-16 text-muted-foreground" />
-                  <p className="text-muted-foreground">Dashboard Preview</p>
-                </div>
-              </div>
-            </div>
-          </Card>
+        <div className="mx-auto mt-16 w-full max-w-5xl border rounded-md relative h-auto aspect-video">
+          <Image
+            src="/dashboard-light.png"
+            alt="Call Me Reminder Dashboard Demo"
+            className="block dark:hidden"
+            fill
+            unoptimized
+          />
+          <Image
+            src="/dashboard.png"
+            alt="Call Me Reminder Dashboard Demo"
+            className="rounded-lg hidden dark:block"
+            fill
+            unoptimized
+          />
         </div>
       </section>
 
       {/* Features Section */}
       <section className="border-t bg-muted/30 py-24">
-        <div className="container space-y-16">
+        <div className="container space-y-16 mx-auto px-4">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Everything you need for voice reminders
@@ -166,7 +166,7 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="container py-24">
+      <section className="container py-24 mx-auto px-4">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             How it works
@@ -211,7 +211,7 @@ export default function LandingPage() {
 
       {/* CTA Section */}
       <section className="border-t bg-muted/30 py-24">
-        <div className="container">
+        <div className="container mx-auto px-4">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Ready to get started?
