@@ -20,17 +20,6 @@ Form for creating reminders with validation.
 - Character counters
 - Loading states
 
-**Usage:**
-
-```tsx
-import { ReminderForm } from "@/components/features/reminders";
-
-<ReminderForm
-  onSuccess={() => console.log("Created!")}
-  onCancel={() => console.log("Cancelled")}
-/>;
-```
-
 ### ReminderDialog (`reminder-dialog.tsx`)
 
 Dialog wrapper containing the ReminderForm.
